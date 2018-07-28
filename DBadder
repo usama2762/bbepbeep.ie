@@ -1,0 +1,25 @@
+import os
+import time
+import psycopg2
+
+conn = psycopg2.connect(host="elmer.db.elephantsql.com",database="mxywyuox", user="mxywyuox", password="vpK0uG4-H1k1JJM4E1TNVfdbEVNCN1Mq")
+print ("Opened database successfully")
+
+cur = conn.cursor()
+# cur.execute('INSERT INTO CAR_MODEL(Make,CAR_MODEL,body_type,co2,vrt_band,annual_road_tax,engine_cc,rrp ) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)',('arr[0]','arr[1]','arr[2]','arr[3]','arr[4]','arr[5]','arr[6]','arr[7]',))
+
+cur.execute("SELECT *  from car_model")
+print(cur.rowcount)
+rows = cur.fetchall()
+for row in rows:
+   print("ID = ", row[0])
+   print("NAME = ", row[1])
+   print("ADDRESS = ", row[2])
+   print("ADDRESS = ", row[3])
+   print("ADDRESS = ", row[4])
+   print("ADDRESS = ", row[5])
+   print("ADDRESS = ", row[6])
+   print("SALARY = ", row[7], "\n")
+
+print("Operation done successfully")
+conn.close()
